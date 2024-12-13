@@ -1,0 +1,333 @@
+<!--  
+
+                           AAA                       
+                          A:::A                      
+                         A:::::A                     
+                        A:::::::A                    
+                       A:::::::::A                   
+                      A:::::A:::::A                  
+                     A:::::A A:::::A                 
+                    A:::::A   A:::::A                
+                   A:::::A     A:::::A               
+                  A:::::AAAAAAAAA:::::A              
+                 A:::::::::::::::::::::A             
+                A:::::AAAAAAAAAAAAA:::::A            
+               A:::::A             A:::::A           
+              A:::::A               A:::::A   ...... 
+             A:::::A                 A:::::A  .::::. 
+            AAAAAAA                   AAAAAAA ...... 
+        
+                       Made by A.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazırlık Geçme Puanı Hesaplama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        label {
+            flex: 1;
+            font-weight: bold;
+        }
+        input, select, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 2;
+        }
+        .hidden {
+            display: none;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0fff0;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .info-text {
+            font-size: 0.55em;
+            color: #666;
+            margin-left: 5px;
+            vertical-align: middle;
+        }.footer-info-header {
+            display: block; 
+            font-weight: 700;
+            font-size: 0.75em;
+            color: #666;
+            margin-top: 10px;
+            vertical-align: middle;
+        }.footer-info-lore {
+            display: block; 
+            font-weight: 200;
+            font-size: 0.75em;
+            color: #666;
+            vertical-align: middle;
+        }.footer-author {
+            display: flex;
+            font-weight: 900;
+            font-size: 1em;
+            justify-content: center; 
+            margin-top: 25px;
+            color: #666;
+            vertical-align: bottom;
+        }
+    </style><!---asdasd-->
+</head>
+<body>
+    <div class="container">
+        <h1>Hazırlık Geçme Puanı Hesaplama</h1>
+
+        <div class="row">
+            <label for="start-module">Hangi modül ile başladınız?</label>
+            <select id="start-module" onchange="updateVisibility()">
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="B1">B1</option>
+            </select>
+
+            <label for="akveimt">Amerikan Kültürü.. mı okuyorsunuz?</label>
+            <select id="akveimt" onchange="updateVisibility()">
+                <option value="Yes">Evet</option>
+                <option value="No">Hayır</option>
+            </select>
+        </div>
+
+        <div id="a1-section">
+            <h2>A1 Bölümü <span class="info-text" id="a1-info-text"></span></h2>
+            <div class="row">
+                <label for="a1-midterm">Midterm Notunuz</label>
+                <input type="number" id="a1-midterm" min="0" max="100">
+
+                <label for="a1-final">Final Notunuz</label>
+                <input type="number" id="a1-final" min="0" max="100">
+
+                <label for="a1-assignment">Ödev Puanınız</label>
+                <input type="number" id="a1-assignment" min="0" max="100">
+            </div>
+        </div>
+
+        <div id="a2-section">
+            <h2>A2 Bölümü <span class="info-text" id="a2-info-text"></span></h2>
+            <div class="row">
+                <label for="a2-midterm">Midterm Notunuz</label>
+                <input type="number" id="a2-midterm" min="0" max="100">
+
+                <label for="a2-final">Final Notunuz</label>
+                <input type="number" id="a2-final" min="0" max="100">
+
+                <label for="a2-assignment">Ödev Puanınız</label>
+                <input type="number" id="a2-assignment" min="0" max="100">
+            </div>
+        </div>
+
+        <div id="b1-section">
+            <h2>B1 Bölümü <span class="info-text" id="b1-info-text"></span></h2>
+            <div class="row">
+                <label for="b1-midterm">Midterm Notunuz</label>
+                <input type="number" id="b1-midterm" min="0" max="100">
+
+                <label for="b1-final">Final Notunuz</label>
+                <input type="number" id="b1-final" min="0" max="100">
+
+                <label for="b1-assignment">Ödev Puanınız</label>
+                <input type="number" id="b1-assignment" min="0" max="100">
+            </div>
+        </div>
+
+        <div id="b2-section">
+            <h2>B2 Bölümü <span class="info-text" id="b2-info-text"></span></h2>
+            <div class="row">
+                <label for="b2-midterm">Midterm Notunuz</label>
+                <input type="number" id="b2-midterm" min="0" max="100">
+
+                <label for="b2-final">Final Notunuz</label>
+                <input type="number" id="b2-final" min="0" max="100">
+
+                <label for="b2-assignment">Ödev Puanınız</label>
+                <input type="number" id="b2-assignment" min="0" max="100">
+            </div>
+        </div>
+
+        <div id="proficiency-exam">
+            <h2>Yeterlilik Sınavı</h2>
+            <div class="row">
+                <label for="pe-score">Yeterlilik Sınavı Notunuz</label>
+                <input type="number" id="pe-score" min="0" max="100">
+            </div>
+        </div>
+
+        <div id="result" class="result"></div>
+        <label class="footer-info-header">Modül Sonu Puanı Hesaplama</label>
+        <label class="footer-info-lore">((Midterm Puanı x 0.4) + (Final Puanı x 0.5) + (Toplam Ödev Puanı x 0.1))</label>
+
+        <label class="footer-info-header">Bir Modülün Sene Sonunda Eklenecek Puanını Hesaplama</label>
+        <label class="footer-info-lore">(Modül Sonu Puanı Hesaplama) * (modül yüzdesi / 100)</label>
+
+        <label class="footer-info-header">Hazırlık Geçme Puanı Hesaplama</label>
+        <label class="footer-info-lore">(Sorumlu Olunan Tüm Modüllerin Eklenecek Puanların Toplamı x 0.3) * (Yeterlilik Sınavı Puanı x 0.7)</label>
+
+        <label class="footer-info-header">Modül Yüzdeleri</label>
+        <label class="footer-info-lore">A1 ile başlarsanız; A1: %10, A2: %20, B1: %30, B2: %40
+            <br>A2 ile başlarsanız; A2: %20, B1: %30, B2: %50
+            <br>B1 ile başlarsanız; B1: %40, B2: %60</label>
+
+        <label class="footer-info-header">Hazırlık Geçme Puanı Kaçtır ?</label>
+        <label class="footer-info-lore">Amerikan Kültürü ve Edebiyatı ile Mütercim Tercümanlık Bölümleri için <b>75</b>, diğerleri için <b>70.</b></label>
+
+        <label class="footer-author">A.</label>
+    </div>
+
+    <script>
+
+
+        function updateVisibility() {
+            const startModule = document.getElementById('start-module').value;
+            const a1Section = document.getElementById('a1-section');
+            const a2Section = document.getElementById('a2-section');
+
+            if (startModule === 'A2') {
+                a1Section.classList.add('hidden');
+                a2Section.classList.remove('hidden');
+            } else if (startModule === 'B1') {
+                a1Section.classList.add('hidden');
+                a2Section.classList.add('hidden');
+            } else {
+                a1Section.classList.remove('hidden');
+                a2Section.classList.remove('hidden');
+            }
+        }
+
+        function calculateGrade() {
+            let a1 = getModuleScoreInTotal('a1');
+            let a2 = getModuleScoreInTotal('a2');
+            let b1 = getModuleScoreInTotal('b1');
+            let b2 = getModuleScoreInTotal('b2');
+            const peScore = clamp(parseFloat(document.getElementById('pe-score').value) || 0, 0, 100);
+            const akveimt = document.getElementById('akveimt').value;
+
+            document.getElementById('pe-score').value = peScore;
+
+            const resultDiv = document.getElementById('result');
+            let result = parseFloat((a1 + a2 + b1 + b2 + (peScore * .7)).toFixed(3))
+            
+            if(akveimt === 'Yes')
+            {
+                resultDiv.innerText = result >= 75 ? "Geçtiniz!" : "Kaldınız!";
+                resultDiv.style.border = result >= 75 ? `1px solid #4CAF50` : `1px solid #f84e4e`;
+                resultDiv.style.background = result >= 75 ? `#f0fff0` : `#ffd1d1`;
+            }
+            else{
+                resultDiv.innerText = result >= 70 ? "Geçtiniz!" : "Kaldınız!";
+                resultDiv.style.border = result >= 70 ? `1px solid #4CAF50` : `1px solid #f84e4e`;
+                resultDiv.style.background = result >= 70 ? `#f0fff0` : `#ffd1d1`;
+            }
+
+            resultDiv.innerText += `\nGeçme Notunuz : ${result}`;
+
+        }
+
+        function updateInfoText(section) {    
+            const startModule = document.getElementById('start-module').value;
+
+            const info = document.getElementById(`${section}-info-text`);
+            info.innerText = "(Modül Geçme Notu: ";
+
+            info.innerText += getModuleScore(section);
+            info.innerText += ", Eklenecek Puan: ";
+            info.innerText += `${getModuleScoreInTotal(section)})`;
+
+            calculateGrade();
+        }
+
+        function getModuleScore(section) {
+            const startModule = document.getElementById('start-module').value;
+           
+            const midterm = clamp(parseFloat(document.getElementById(`${section}-midterm`).value) || 0, 0, 100);
+            document.getElementById(`${section}-midterm`).value = midterm;
+
+            const final = clamp(parseFloat(document.getElementById(`${section}-final`).value)|| 0, 0, 100);
+            document.getElementById(`${section}-final`).value = final;
+            
+            const assignment = clamp(parseFloat(document.getElementById(`${section}-assignment`).value)|| 0, 0, 100);
+            document.getElementById(`${section}-assignment`).value = assignment;
+
+            return parseFloat(((midterm * .4) + (final * .5) + (assignment * .1)).toFixed(2));
+        }
+
+        function getModuleScoreInTotal(section) {
+            const startModule = document.getElementById('start-module').value;
+            
+            let result = getModuleScore(section);
+
+            if(startModule === 'A1')
+                result = section === 'a1' ? (result * .1) : section === 'a2' ? (result * .2) : section == 'b1' ? (result * .3) : section == 'b2' ? (result * .4) : 0
+            else if(startModule === 'A2')
+                result = section === 'a2' ? (result * .2) : section == 'b1' ? (result * .3) : section == 'b2' ? (result * .5) : 0
+            else if(startModule === 'B1')
+                result = section === 'b1' ? (result * .4) : section == 'b2' ? (result * .6) : 0
+            else
+                result = 0;
+            result *= .3;
+            return parseFloat(result.toFixed(3));
+        }
+
+        function clamp(value, min, max) {
+            return Math.max(min, Math.min(value, max));
+        }
+
+
+        updateVisibility();
+        calculateGrade();
+
+        document.getElementById('a1-midterm').addEventListener('input', function() { updateInfoText('a1'); });
+        document.getElementById('a1-final').addEventListener('input', function() { updateInfoText('a1'); });
+        document.getElementById('a1-assignment').addEventListener('input', function() { updateInfoText('a1'); });
+
+        document.getElementById('a2-midterm').addEventListener('input', function() { updateInfoText('a2'); });
+        document.getElementById('a2-final').addEventListener('input', function() { updateInfoText('a2'); });
+        document.getElementById('a2-assignment').addEventListener('input', function() { updateInfoText('a2'); });
+
+        document.getElementById('b1-midterm').addEventListener('input', function() { updateInfoText('b1'); });
+        document.getElementById('b1-final').addEventListener('input', function() { updateInfoText('b1'); });
+        document.getElementById('b1-assignment').addEventListener('input', function() { updateInfoText('b1'); });
+
+        document.getElementById('b2-midterm').addEventListener('input', function() { updateInfoText('b2'); });
+        document.getElementById('b2-final').addEventListener('input', function() { updateInfoText('b2'); });
+        document.getElementById('b2-assignment').addEventListener('input', function() { updateInfoText('b2'); });
+
+        document.getElementById('pe-score').addEventListener('input', function() { calculateGrade(); });
+        document.getElementById('akveimt').addEventListener('input', function() { calculateGrade(); });
+
+        document.getElementById('start-module').addEventListener('input', function() { updateInfoText('a1');updateInfoText('a2');updateInfoText('b1');updateInfoText('b2'); });
+    </script>
+</body>
+</html>
