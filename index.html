@@ -113,6 +113,7 @@
             vertical-align: bottom;
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -200,7 +201,6 @@
             </div>
         </div>
 
-      
         <div id="b1-section">
             <h2>B1 Bölümü <span class="info-text" id="b1-info-text"></span></h2>
             <div class="row">
@@ -245,7 +245,7 @@
         <label class="footer-info-lore">(Modül Sonu Puanı Hesaplama) * (modül yüzdesi / 100)</label>
 
         <label class="footer-info-header">Hazırlık Geçme Puanı Hesaplama</label>
-        <label class="footer-info-lore">(Sorumlu Olunan Tüm Modüllerin Eklenecek Puanların Toplamı x 0.3) + (Yeterlilik Sınavı Puanı x 0.7)</label>
+        <label class="footer-info-lore">(Sorumlu Olunan Tüm Modüllerin Eklenecek Puanların Toplamı x 0.3) * (Yeterlilik Sınavı Puanı x 0.7)</label>
 
         <label class="footer-info-header">Modül Yüzdeleri</label>
         <label class="footer-info-lore">A1 ile başlarsanız; A1: %10, A2: %20, B1: %30, B2: %40
@@ -255,9 +255,8 @@
         <label class="footer-info-header">Hazırlık Geçme Puanı Kaçtır ?</label>
         <label class="footer-info-lore">Amerikan Kültürü ve Edebiyatı ile Mütercim Tercümanlık Bölümleri için <b>75</b>, diğerleri için <b>70.</b></label>
 
-        <label class="footer-info-info-header">Not</label>
-        <label class="footer-info-lore">Geçme notunuz 69.5 sa yuvarlanır 70 olur. (Kesin değil)</label>
-
+          <label class="footer-info-header">Not?</label>
+        <label class="footer-info-lore">Geçme notunuz 69.5 'sa 70'e yuvarlanır. (Kesin Değil)</label>
 
         <label class="footer-author">A.</label>
     </div>
@@ -285,7 +284,7 @@
         function calculateGrade() {
             let a1 = getModuleScoreInTotal('a1');
             let a2 = getModuleScoreInTotal('a2');
-            let b1 = getModuleScoreInTotal('b1
+            let b1 = getModuleScoreInTotal('b1');
             let b2 = getModuleScoreInTotal('b2');
             const peScore = clamp(parseFloat(document.getElementById('pe-score').value) || 0, 0, 100);
             const akveimt = document.getElementById('akveimt').value;
