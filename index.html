@@ -238,7 +238,7 @@
 
         <div id="result" class="result"></div>
         <label class="footer-info-header">Modül Sonu Puanı Hesaplama</label>
-        <label class="footer-info-lore">((Midterm Puanı x 0.4) + (Final Puanı x 0.5) + (Toplam Ödev Puanı x 0.1))</label>
+        <label class="footer-info-lore">((Midterm Puanı x 0.3) + (Final Puanı x 0.4) + (Toplam Ödev Puanı x 0.3))</label>
 
         <label class="footer-info-header">Bir Modülün Sene Sonunda Eklenecek Puanını Hesaplama</label>
         <label class="footer-info-lore">(Modül Sonu Puanı Hesaplama) * (modül yüzdesi / 100)</label>
@@ -331,7 +331,7 @@
             const assignment = clamp(parseFloat(document.getElementById(`${section}-assignment`).value)|| 0, 0, 100);
             document.getElementById(`${section}-assignment`).value = assignment;
 
-            return parseFloat(((midterm * .4) + (final * .5) + (assignment * .1)).toFixed(2));
+            return parseFloat(((midterm * .3) + (final * .4) + (assignment * .3)).toFixed(2));
         }
 
         function getModuleScoreInTotal(section) {
